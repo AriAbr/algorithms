@@ -1,0 +1,78 @@
+1. Using proper pseudo-code, describe the following primitive algorithms:
+- Making coffee;
+- Washing dishes;
+- A choice of your own. -- Folding Laundry
+
+FUNCTION makeCoffee(water, instantCoffee, sweetener, milk)
+  SET water.temperature to 212
+  SET cup to empty array
+  ADD water to cup
+  ADD instantCoffee to cup
+  ADD sweetener to cup
+  ADD milk to cup
+END FUNCTION
+
+FUNCTION washDishes(sink)
+  FOR each dish in sink
+    SET currentDish to dish
+    RINSE currentDish
+    SCRUB currentDish
+    RINSE currentDish
+    REMOVE currentDish from sink
+    ADD currentDish to drying rack
+  END FOR
+END FUNCTION
+
+FUNCTION foldLaundry(laundryPile)
+  SET shirtPile to empty array
+  SET pantsPile to empty array
+  SET underwearPile to empty array
+  SET sockPile to empty array
+
+  set singleSocks to empty array
+
+  FOR each clothingArticle in laundryPile
+    SET currentArticle toclothingArticle
+    REMOVE currentArticle from laundryPile
+    IF currentArticle.type equals shirt
+      CALL foldShirt with currentArticle
+      ADD currentArticle to shirtPile
+    ELSE IF currentArticle.type equals pants
+      CALL foldPants with currentArticle
+      ADD currentArticle to pantsPile
+    ELSE IF currentArticle.type equals underwear
+      ADD currentArticle to underwearPile
+    ELSE IF currentArticle.type equals sock
+      FOR each sock in singleSocks
+        IF sock.sockType equals currentArticle.sockType
+        CALL foldSocks with sock and currentArticle RETURNING sockPair
+        ADD sockPair to sockPile
+      END FOR
+    ELSE
+      ADD currentArticle to singleSocks
+    END IF
+  END FOR
+END FUNCTION
+
+
+2. As with the knot algorithm, there may be more than one way to solve the
+problem. It is essential to try to pick the best algorithm for a situation. Name
+three companies who created an algorithm that made them successful, e.g.,
+Google's search algorithm. It doesn't need to be a tech example (such as a
+recipe or manufacturing a product). Google's algorithm produces more relevant
+results than other search engines; what about each of your cases make them stand
+out?
+
+Amazon has created a successful logistics algorithm that effectively manages and
+keeps track of a huge number of deliveries. Facebook has created a successful
+algorithm to determine which posts to show at the top of a user's newsfeed. Uber
+has created a successful algorithm to determine which users should get paired
+with which drivers.
+
+
+3. Hypothesize about what constitutes an efficient algorithm versus an
+inefficient algorithm.
+
+An efficient algorithm is as fast and memory-efficient as possible. An
+inefficient algorithm will either take more time then necessary to complete or
+use up more memory than necessary while it is running.
