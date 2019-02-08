@@ -1,0 +1,114 @@
+# Short Answer
+
+1. What is a real-life scenario that uses linear search?
+
+Looking through a shuffled deck of cards to find a particular card.
+
+2. What is a real-life scenario that uses binary search?
+
+Looking through a book to find the right page. It is not exactly the same as
+binary search, but a similar idea. You open a book to somewhere in the middle,
+see what page you are on, then flip either forward or backward depending on what
+page you are looking for.
+
+3. Given the alphabetically sorted collection in this checkpoint, how many
+iterations would it take to find the value G using linear search?
+
+7 iterations
+
+4. Given the alphabetically sorted collection in this checkpoint, how many
+iterations would it take to find the value G using binary search?
+
+3 iterations
+
+5. Given an unsorted collection of a million items, which algorithm would you
+choose between linear search and binary search? Explain your reasoning.
+
+I would use linear search since binary search only works with sorted
+collections.
+
+6. Given a sorted collection of a million items, which algorithm would you
+choose between linear search and binary search? Explain your reasoning.
+
+I would use binary search. Since the collection is sorted binary search is an
+available option and it is faster than linear search.
+
+# Programming Assignment
+
+1. You and a friend have set a wager to see who can find the word "Albatross" in
+the dictionary the fastest. Write a program to allow you to win the bet.
+
+function dictionarySearch (dictionary, targetWord) {
+  var low = 0;
+  var high = dictionary.length-1;
+  while (low <= high) {
+    var mid = Math.round((low+high)/2);
+    var midPage = dictionary[mid];
+
+    if (midPage[0].localeCompare(targetWord) > 0) {
+      high = mid-1;
+    } else if (midPage[midPage.length-1].localeCompare(targetWord) < 0){
+      low = mid+1;
+    } else {
+      return mid;
+    }
+  }
+  return "not found";
+}
+
+var testDictionary = [
+  [
+    "abstruct", "accident", "add"
+  ],[
+    "Albatross", "Arkasas" ,"artichoke"
+  ],[
+     "car", "catastrope", "climb"
+  ],[
+    "dire", "dog", "dogmatic"
+  ],
+]
+
+console.log(dictionarySearch(testDictionary, "Albatross"));
+
+
+2. You work at a pet store, and a child has asked you to net the only
+white-spotted goldfish from the fish tank. Write a program that will help you
+net the right fish.
+
+
+function netFish(tank, spotColor) {
+  var result = null;
+  for(let i = 0; i < tank.length; i++) {
+    var fish = tank[i];
+    if(fish.spotColor === spotColor){
+      result = i;
+      break;
+    }
+  }
+  return result;
+};
+
+var testTank = [
+ {
+   type: "goldfish",
+   spotColor: null
+ },
+ {
+   type: "goldfish",
+   spotColor: "black"
+ },
+ {
+   type: "goldfish",
+   spotColor: "white"
+ },
+ {
+   type: "goldfish",
+   spotColor: null
+ },
+ {
+   type: "goldfish",
+   spotColor: "yellow"
+ }
+];
+
+console.log(netFish(testTank, "white"));
