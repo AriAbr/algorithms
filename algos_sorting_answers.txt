@@ -1,0 +1,64 @@
+1. Write pseudocode for bubble sort.
+
+FUNCTION bubbleSort(collection)
+  SET swapped to true
+  WHILE swapped is true
+    SET swapped to false
+    FOR each element in collection except for the last one
+      IF collection[i] > collection[i+1] THEN
+        SET tmp to colleciton [i]
+        SET collection[i] to collection[i+1]
+        SET collection[i+1] to tmp
+        SET swapped to true
+      END IF
+    END FOR
+  END WHILE
+  RETURN collection
+END FUNCTION
+
+2. Write pseudocode for quicksort.
+
+FUNCTION quickSort(collection)
+  IF collection.length < 2 THEN
+    RETURN collection
+  END IF
+  SET pivotIndex to LAST INDEX of collection
+  SET pivotElement to collection[pivotIndex]
+  SET firstHalf to empty array
+  SET secondhalf to empty array
+  FOR each element in collection except for the last element
+    IF collection[i] <= pivotElement THEN
+      APPEND element to firstHalf
+    ELSE IF collection[i] > pivotElement THEN
+      APPEND element to secondHalf
+    END IF
+  END FOR
+
+  CALL quickSort with firstHalf RETURNING sortedFirstHalf
+  CALL quickSort with secondhalf RETURNING sortedSecondhalf
+
+  SET collection to sortedFirstHalf + pivotElement + sortedSecondhalf
+  RETURN collection
+END FUNCTION
+
+3. We talked about time complexity in a previous checkpoint, and how to get an
+idea of the efficiency of an algorithm. After looking at the pseudocode for the
+above sorting methods, identify why merge sort and quick sort are much more
+efficient than the others. Walking through each algorithm with a few sample
+collections may help.
+
+Insertion sort, selection sort and bubble sort are all constructed using nested
+loops so their time complexity is O(n^2). However, merge and quick sort
+each use a divide and conquer method. They divide the collection into
+progressively smaller collections and then perform actions on those smaller
+collections. Because of this, they each have a more efficient time complexity of
+O(n log n).
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts.
+Research bucket sort and explain how it works. What is the ideal input for
+bucket sort?
+
+Bucket sort starts by iterating though an array, and placing each element in a
+"bucket" based on its value. It then sorts through each bucket individually and
+rejoins the sorted buckets to form a fully sorted collection. It works best when
+the input collection contains elements that are distributed evenly over a range.
